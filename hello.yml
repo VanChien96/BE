@@ -1,0 +1,20 @@
+config:
+  target: 'http://localhost:8000'
+  phases:
+    - duration: 20
+      arrivalRate: 200
+  http:
+    pool: 5
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - get:
+        url: "/user"
+  - flow:
+    - post:
+        url: '/user/login'
+        json: 
+          Gmail: "chien2@gmail.com"
+          Password: "123"
