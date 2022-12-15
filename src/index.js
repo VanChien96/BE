@@ -25,3 +25,8 @@ route(app);
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 })
+
+ // "scripts": {
+  //   "start": "node src/index.js",
+  //   "test": "echo \"Error: no test specified\" && exit 1"
+  // },
