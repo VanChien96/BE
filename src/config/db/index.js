@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
 var connect = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'PBL6'
+    host: 'sql6.freesqldatabase.com',
+    user: 'sql6586700',
+    password: '9KPwM132Cg',
+    database: 'sql6586700'
 });
 
   connect.connect(function (err) {
@@ -13,4 +13,3 @@ var connect = mysql.createConnection({
 });
 
 module.exports = connect;
-
