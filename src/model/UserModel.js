@@ -11,7 +11,7 @@ const User = function(user){
     this.Address = user.Address;
 }
 User.GetAllUser = function (result){
-    db.query("select * from User", function (err, h) {
+    db.query("select * from user", function (err, h) {
         if (err) {
             console.log(err);
             result(err);
@@ -32,7 +32,7 @@ User.getById = function (id, result) {
 };
 User.Add = function (data, result) {
     db.query(
-      "INSERT INTO User (ID_User,HoTen,Gmail,Password,NumberPhone,Address) VALUES (NULL,?,?,?,?,?);",
+      "INSERT INTO user (ID_User,HoTen,Gmail,Password,NumberPhone,Address) VALUES (NULL,?,?,?,?,?);",
       [
         data.HoTen,
         data.Gmail,
@@ -62,11 +62,11 @@ User.Remove_User = function (id, result) {
   });
 };
 User.Register =function(data, result) {
-  db.query("select * from User where Gmail = ?", data.Gmail, (err, user) => {
+  db.query("select * from user where Gmail = ?", data.Gmail, (err, user) => {
     console.log(user);
     if (user.length==0) {
       db.query(
-        "INSERT INTO User (ID_User,HoTen,Gmail,Password,NumberPhone,Address) VALUES (NULL,?,?,?,?,?);",
+        "INSERT INTO user (ID_User,HoTen,Gmail,Password,NumberPhone,Address) VALUES (NULL,?,?,?,?,?);",
         [
           data.HoTen,
           data.Gmail,
@@ -90,7 +90,7 @@ User.Register =function(data, result) {
 };
 User.UpdateUser = function (data,id, result) {
   db.query(
-    "update User set HoTen=?,NumberPhone=?,Address=? where ID_User = ?",
+    "update user set HoTen=?,NumberPhone=?,Address=? where ID_User = ?",
     [
       data.HoTen,
       data.NumberPhone,
@@ -110,7 +110,7 @@ User.UpdateUser = function (data,id, result) {
 };
 User.UpdatePassword = function (data,id, result) {
   console.log(data);
-  db.query("select * from User where ID_User = ? and Password= ?",
+  db.query("select * from user where ID_User = ? and Password= ?",
   [id, data.OldPassword], 
   function(err, user){
     console.log(user);
@@ -123,7 +123,7 @@ User.UpdatePassword = function (data,id, result) {
           }
           else {
             db.query(
-            "update User set Password=? where ID_User = ?",
+            "update user set Password=? where ID_User = ?",
             [
               data.NewPassword,
               id
